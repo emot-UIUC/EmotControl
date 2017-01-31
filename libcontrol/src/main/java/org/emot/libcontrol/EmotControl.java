@@ -18,7 +18,7 @@ import java.util.concurrent.TimeUnit;
 /**
  * Wraps UsbSerial library by felHR85 (github.com/felHR85/UsbSerial)
  * Provides convenient interface for controlling the EMOT actuators.
- *
+ * <p>
  * Call onCreate, onPause, onResume at appropriate time of the app's lifecycle.
  *
  * @author Tiangang
@@ -29,7 +29,8 @@ public class EmotControl {
     public static final int CTS_CHANGE = 1;
     public static final int DSR_CHANGE = 2;
 
-    private EmotControl() {}
+    private EmotControl() {
+    }
 
     private static EmotControl instance = new EmotControl();
     private UsbService usbService;
@@ -44,7 +45,7 @@ public class EmotControl {
         instance.startService(UsbService.class, instance.usbConnection, null);
         instance.mHandler = handle;
         instance.threadQueue = new LinkedBlockingQueue<>();
-        instance.threadExecutor = new ThreadPoolExecutor(1,1,1, TimeUnit.MINUTES, instance.threadQueue);
+        instance.threadExecutor = new ThreadPoolExecutor(1, 1, 1, TimeUnit.MINUTES, instance.threadQueue);
     }
 
     public static void onPause() {
@@ -116,36 +117,18 @@ public class EmotControl {
     }
 
     public static void setEmotion(Emotions which) {
-        if (instance.runningFuture == null) {
-            instance.runningFuture = instance.threadExecutor.submit(new Runnable() {
-                @Override
-                public void run() {
-
-                }
-            });
+        if (instance.runningFuture != null && !instance.runningFuture.isDone()) {
+            instance.runningFuture.cancel(true);
         }
+        instance.runningFuture = instance.threadExecutor.submit(AnimationFactory.getRunnable(which));
     }
 
-
-    public static void setNewHandler(Handler customHandler) {
+    private static void setNewHandler(Handler customHandler) {
         instance.usbService.setHandler(customHandler);
     }
 
     private static void sendBytes(byte[] data) {
         instance.usbService.write(data);
-    }
-
-    private class EmotionRunnable implements Runnable {
-        Emotions emot;
-
-        EmotionRunnable(Emotions which) {
-            emot = which;
-        }
-
-        @Override
-        public void run() {
-
-        }
     }
 
     private final ServiceConnection usbConnection = new ServiceConnection() {
