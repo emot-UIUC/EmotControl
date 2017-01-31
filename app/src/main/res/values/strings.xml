@@ -1,0 +1,11 @@
+<resources>
+    <string name="app_name">EmotControl</string>
+    <string name="pressure_a">Pressure A</string>
+    <string name="_000_00">000.00</string>
+    <string name="pressure_b">Pressure B</string>
+    <string name="right_led">Right LED</string>
+    <string name="right_arm">Right Arm</string>
+    <string name="left_arm">Left Arm</string>
+    <string name="left_led">Left LED</string>
+    <string name="emotion">Emotion</string>
+</resources>

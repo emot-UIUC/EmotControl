@@ -1,0 +1,143 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/activity_main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:paddingTop="@dimen/activity_vertical_margin"
+    android:paddingBottom="@dimen/activity_vertical_margin"
+    tools:context="org.emot.emotcontrol.MainActivity">
+
+    <Spinner
+        android:layout_height="wrap_content"
+        android:layout_marginTop="13dp"
+        android:id="@+id/leftArmSpinner"
+        android:layout_marginStart="20dp"
+        android:layout_width="150dp"
+        android:layout_below="@+id/leftArmLabel"
+        android:layout_alignParentStart="true"
+        android:spinnerMode="dialog" />
+
+    <Spinner
+        android:layout_height="wrap_content"
+        android:id="@+id/rightArmSpinner"
+        android:layout_width="150dp"
+        android:spinnerMode="dialog"
+        android:layout_alignTop="@+id/leftArmSpinner"
+        android:layout_alignParentEnd="true"
+        android:layout_marginEnd="17dp" />
+
+    <Spinner
+        android:layout_height="wrap_content"
+        android:id="@+id/leftLedSpinner"
+        android:layout_width="150dp"
+        android:spinnerMode="dialog"
+        android:layout_below="@+id/textView3"
+        android:layout_alignStart="@+id/leftArmSpinner"
+        android:layout_marginTop="15dp" />
+
+    <Spinner
+        android:layout_height="wrap_content"
+        android:id="@+id/rightLedSpinner"
+        android:layout_alignTop="@+id/leftLedSpinner"
+        android:layout_alignStart="@+id/rightArmSpinner"
+        android:layout_width="150dp"
+        android:spinnerMode="dialog" />
+
+    <TextView
+        android:text="@string/_000_00"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" android:layout_alignBottom="@+id/aValue"
+        android:layout_alignStart="@+id/pressureB" android:id="@+id/bValue"
+        android:textAppearance="@android:style/TextAppearance.Material.Large"/>
+    <TextView
+        android:text="@string/pressure_b"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/pressureB"
+        android:layout_marginEnd="63dp"
+        android:layout_above="@+id/aValue" android:layout_alignParentEnd="true"/>
+
+    <TextView
+        android:text="@string/right_led"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignTop="@+id/textView3"
+        android:layout_alignStart="@+id/textView2"
+        android:id="@+id/textView4" />
+
+    <TextView
+        android:text="@string/right_arm"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/textView2"
+        android:layout_alignBaseline="@+id/leftArmLabel"
+        android:layout_alignBottom="@+id/leftArmLabel"
+        android:layout_alignEnd="@+id/pressureB" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="11dp"
+        android:id="@+id/aValue"
+        android:textAppearance="@android:style/TextAppearance.Material.Large"
+        android:text="@string/_000_00"
+        android:layout_below="@+id/pressureA"
+        android:layout_alignStart="@+id/pressureA" />
+
+    <TextView
+        android:text="@string/left_arm"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:id="@+id/leftArmLabel"
+        android:layout_below="@+id/aValue"
+        android:layout_alignStart="@+id/aValue" />
+
+    <TextView
+        android:text="@string/left_led"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="21dp"
+        android:id="@+id/textView3"
+        android:layout_below="@+id/leftArmSpinner"
+        android:layout_alignEnd="@+id/leftArmLabel" />
+
+    <TextView
+        android:text="@string/pressure_a"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/pressureA"
+        android:layout_alignParentTop="true"
+        android:layout_alignEnd="@+id/leftArmSpinner"
+        android:layout_marginEnd="35dp" />
+
+    <TextView
+        android:text="@string/emotion"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/leftLedSpinner"
+        android:layout_alignStart="@+id/leftArmLabel"
+        android:layout_marginTop="26dp"
+        android:id="@+id/textView" />
+
+    <Spinner
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/emotionSpinner"
+        android:layout_alignTop="@+id/textView"
+        android:layout_toEndOf="@+id/aValue" />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/statusView"
+        android:layout_below="@+id/emotionSpinner"
+        android:layout_alignParentStart="true"
+        android:layout_marginTop="11dp"
+        android:layout_alignParentBottom="true" />
+
+</RelativeLayout>
