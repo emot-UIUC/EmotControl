@@ -58,8 +58,8 @@ void setup() {
 
     // It's important to set the color correction for your LED strip here,
     // so that colors can be more accurately rendered through the 'temperature' profiles
-    FastLED.addLeds<CHIPSET, LED_PIN, COLOR_ORDER>(leds, NUM_LEDS).setCorrection( TypicalSMD5050 );
-    FastLED.setBrightness( BRIGHTNESS );
+    FastLED.addLeds<CHIPSET, LED_PIN, COLOR_ORDER>(leds, NUM_LEDS).setCorrection(TypicalSMD5050);
+    FastLED.setBrightness(BRIGHTNESS);
 
     mpl115a2.begin();    // Initiate Pressure sensors
 
@@ -77,8 +77,8 @@ void setup() {
 
 
 void loop() {
-	time = millis();
-	Serial.readBytes(msg, 4);
+    time = millis();
+    Serial.readBytes(msg, 4);
 
     if (msg[0] == 0) {
         // arm
@@ -88,27 +88,27 @@ void loop() {
             right_arm.char_control(msg[2]);
         }
     } else {
-        leds[(int) msg[0]-1].red   = (int) msg[1];
-        leds[(int) msg[0]-1].green = (int) msg[2];
-        leds[(int) msg[0]-1].blue  = (int) msg[3];
+        leds[(int) msg[0] - 1].red = (int) msg[1];
+        leds[(int) msg[0] - 1].green = (int) msg[2];
+        leds[(int) msg[0] - 1].blue = (int) msg[3];
         FastLED.show();
     }
 
-	if (time - last > REPORT_INTERVAL) {
-		// Report sensor readings
-		digitalWrite(7, HIGH);
-		digitalWrite(8, LOW);
-		pressure1 = mpl115a2.getPressure();
+    if (time - last > REPORT_INTERVAL) {
+        // Report sensor readings
+        digitalWrite(7, HIGH);
+        digitalWrite(8, LOW);
+        pressure1 = mpl115a2.getPressure();
 
-		digitalWrite(7, LOW);
-		digitalWrite(8, HIGH);
-		pressure2 = mpl115a2.getPressure();
+        digitalWrite(7, LOW);
+        digitalWrite(8, HIGH);
+        pressure2 = mpl115a2.getPressure();
 
         dtostrf(pressure1, 6, 2, pressure_1_buf);
         dtostrf(pressure2, 6, 2, pressure_2_buf);
         sprintf(uplink_buf, "%s %s", pressure_1_buf, pressure_2_buf);
-		Serial.write(uplink_buf, 13);
+        Serial.write(uplink_buf, 13);
 
-		last = time;
-	}
+        last = time;
+    }
 }

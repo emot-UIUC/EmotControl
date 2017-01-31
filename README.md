@@ -1,6 +1,6 @@
 # EmotControl
 
-This library provides a convenient interface to interact with our hardware from a  The library also provides properties via string resources:
+This library provides a convenient Java interface to interact with our hardware. The library also provides properties via string resources:
 
 ```
 <string-array name="arm_actions_array">

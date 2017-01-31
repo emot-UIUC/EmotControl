@@ -38,7 +38,19 @@ class AnimationFactory {
 
         @Override
         public void run() {
-            System.out.println("dajizi");
+            try {
+                EmotControl.setLed(Leds.LEFT, LedColors.RED);
+                EmotControl.setLed(Leds.RIGHT, LedColors.RED);
+                EmotControl.setArm(Arms.LEFT, ArmActions.UP);
+                EmotControl.setArm(Arms.RIGHT, ArmActions.UP);
+                Thread.sleep(2000);
+                EmotControl.setLed(Leds.LEFT, LedColors.RED);
+                EmotControl.setLed(Leds.RIGHT, LedColors.RED);
+                EmotControl.setArm(Arms.LEFT, ArmActions.DOWN);
+                EmotControl.setArm(Arms.RIGHT, ArmActions.DOWN);
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
         }
     }
 
@@ -46,7 +58,19 @@ class AnimationFactory {
 
         @Override
         public void run() {
-            System.out.println("dajizi");
+            try {
+                EmotControl.setLed(Leds.LEFT, LedColors.YELLOW);
+                EmotControl.setLed(Leds.RIGHT, LedColors.YELLOW);
+                EmotControl.setArm(Arms.LEFT, ArmActions.DOWN);
+                EmotControl.setArm(Arms.RIGHT, ArmActions.DOWN);
+                Thread.sleep(2000);
+                EmotControl.setLed(Leds.LEFT, LedColors.RED);
+                EmotControl.setLed(Leds.RIGHT, LedColors.RED);
+                EmotControl.setArm(Arms.LEFT, ArmActions.UP);
+                EmotControl.setArm(Arms.RIGHT, ArmActions.UP);
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
         }
     }
 
@@ -54,7 +78,7 @@ class AnimationFactory {
 
         @Override
         public void run() {
-            System.out.println("dajizi");
+            // @todo
         }
     }
 
@@ -62,7 +86,7 @@ class AnimationFactory {
 
         @Override
         public void run() {
-            System.out.println("dajizi");
+            // @todo
         }
     }
 
@@ -70,7 +94,7 @@ class AnimationFactory {
 
         @Override
         public void run() {
-            System.out.println("dajizi");
+            // @todo
         }
     }
 
@@ -78,7 +102,7 @@ class AnimationFactory {
 
         @Override
         public void run() {
-            System.out.println("dajizi");
+            // @todo
         }
     }
 }
